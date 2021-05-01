@@ -10,6 +10,16 @@ colors = ""
 colorsList = []
 coloramaColor = ""
 
+def setColor(color):
+    if color == "Red":
+        return Fore.RED
+    elif color == "Blue":
+        return Fore.BLUE
+    elif color == "Yellow":
+        return Fore.YELLOW
+    elif color == "Green":
+        return Fore.GREEN
+
 if gameID == "":
     gameID = input("\nEnter the quiz ID:\n\n")
 
@@ -26,25 +36,11 @@ if r.status_code == 200:
                         if slide["choices"][i]["correct"] == True:
                             if slide["type"] == "quiz":
                                 colors = ["Red", "Blue", "Yellow", "Green"][i]   
-                                if colors == "Red":
-                                    coloramaColor = Fore.RED
-                                elif colors == "Blue":
-                                    coloramaColor = Fore.BLUE
-                                elif colors == "Yellow":
-                                    coloramaColor = Fore.YELLOW
-                                elif colors == "Green":
-                                    coloramaColor = Fore.GREEN
+                                coloramaColor = setColor(colors)
                                 break
                             else:
                                 colorsList.append(["Red", "Blue", "Yellow", "Green"][i])
-                                if colorsList[0] == "Red":
-                                    coloramaColor = Fore.RED
-                                elif colorsList[0] == "Blue":
-                                    coloramaColor = Fore.BLUE
-                                elif colorsList[0] == "Yellow":
-                                    coloramaColor = Fore.YELLOW
-                                elif colorsList[0] == "Green":
-                                    coloramaColor = Fore.GREEN
+                                coloramaColor = setColor(colorsList[0])
                         elif slide["choices"][i]["correct"] == False and slide["type"] == "quiz":
                             colors = "Unknown"
                     if len(colorsList) > 0:
