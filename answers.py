@@ -5,7 +5,7 @@ from colorama import Fore, init
 
 init(True)
 
-gameID = ""
+gameID = "" # Enter game ID here; if not entered, you will be prompted
 colors = ""
 colorsList = []
 coloramaColor = ""
